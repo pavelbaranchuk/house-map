@@ -9,14 +9,15 @@ const styles = {
   }
 };
 
-const Address = ({ classes }) => (
+const Address = ({ classes, address }) => (
   <Typography component="p" className={classes.houseAddress}>
-    Ukraine, Kharkov, Akademika Proskyury street, app.9, 61085
+    {address}
   </Typography>
 );
 
 Address.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  address: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Address);

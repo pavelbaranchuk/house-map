@@ -9,14 +9,15 @@ const styles = {
   }
 };
 
-const Area = ({ classes }) => (
+const Area = ({ classes, area }) => (
   <Typography component="p" className={classes.houseArea}>
-    9 sqr. km.
+    {`${area} sqr. km.`}
   </Typography>
 );
 
 Area.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  area: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Area);

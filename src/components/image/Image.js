@@ -11,19 +11,16 @@ const styles = {
   }
 };
 
-const Image = ({ classes, insider }) => (
-  <CardMedia
-    className={classes.media}
-    image="https://content.screencast.com/users/pablo_picaso/folders/Jing/media/2b164f3f-268b-4130-9c5f-44959fa759e5/00000089.png"
-    title="House Image"
-  >
+const Image = ({ classes, insider, src }) => (
+  <CardMedia className={classes.media} image={src} title="House Image">
     {insider.props.children}
   </CardMedia>
 );
 
 Image.propTypes = {
   classes: PropTypes.object,
-  insider: PropTypes.object
+  insider: PropTypes.object,
+  src: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Image);

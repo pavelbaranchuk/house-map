@@ -49,20 +49,27 @@ class HouseMap extends Component {
                 }
                 return (
                   <div key={i}>
-                    {item.component === "PRICE" && <Price />}
-                    {item.component === "ADDRESS" && <Address />}
+                    {item.component === "PRICE" && <Price price={item.field} />}
+                    {item.component === "ADDRESS" && (
+                      <Address address={item.field} />
+                    )}
                     {item.component === "IMAGE" && (
                       <Image
+                        src={item.field}
                         insider={
                           <div className={classes.inside}>
                             {child.map((subitem, k) => {
                               return (
                                 <div key={k}>
                                   {subitem.component === "ADDRESS" && (
-                                    <Address />
+                                    <Address address={subitem.field} />
                                   )}
-                                  {subitem.component === "PRICE" && <Price />}
-                                  {subitem.component === "AREA" && <Area />}
+                                  {subitem.component === "PRICE" && (
+                                    <Price price={subitem.field} />
+                                  )}
+                                  {subitem.component === "AREA" && (
+                                    <Area area={subitem.field} />
+                                  )}
                                 </div>
                               );
                             })}
@@ -70,7 +77,7 @@ class HouseMap extends Component {
                         }
                       />
                     )}
-                    {item.component === "AREA" && <Area />}
+                    {item.component === "AREA" && <Area area={item.field} />}
                   </div>
                 );
               })}

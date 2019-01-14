@@ -10,14 +10,15 @@ const styles = {
   }
 };
 
-const Price = ({ classes }) => (
+const Price = ({ classes, price }) => (
   <Typography component="p" className={classes.housePrice}>
-    $9
+    {`$${price}`}
   </Typography>
 );
 
 Price.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  price: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Price);
