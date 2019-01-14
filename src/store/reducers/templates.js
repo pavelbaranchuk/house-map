@@ -1,6 +1,6 @@
 import * as actionTypes from "../actionTypes";
 
-export const INITIAL_STATE = [];
+export const INITIAL_STATE = {};
 
 export default function templatesReducer(state = INITIAL_STATE, action) {
   switch (action.type) {

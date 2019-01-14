@@ -1,10 +1,9 @@
 import * as actionTypes from "../actionTypes";
 
-export function loadTemplate(id) {
-  return async dispatch => {
+export function loadTemplate() {
+  return dispatch => {
     dispatch({
-      type: actionTypes.FETCH_TEMPLATE_START,
-      payload: { id }
+      type: actionTypes.FETCH_TEMPLATE_START
     });
     fetch(`http://demo4452328.mockable.io/templates`)
       .then(res => {
@@ -16,23 +15,14 @@ export function loadTemplate(id) {
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_TEMPLATE_SUCCESS,
-          payload: { id, response }
+          payload: { response }
         })
       )
       .catch(error => {
         dispatch({
           type: actionTypes.FETCH_TEMPLATE_FAIL,
-          payload: { id, error }
+          payload: { error }
         });
       });
-  };
-}
-
-export function loadCachedTemplate() {
-  return (dispatch, getState) => {
-    if (getState().albums.length) {
-      return;
-    }
-    dispatch(loadTemplate());
   };
 }
