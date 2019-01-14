@@ -5,6 +5,7 @@ import { Grid, Card, CardContent } from "@material-ui/core";
 
 import { connect } from "react-redux";
 import { loadTemplate } from "../../store/actionCreators/templates";
+import { loadHousesData } from "../../store/actionCreators/houses";
 
 import Area from "../area/Area";
 import Image from "../image/Image";
@@ -21,15 +22,18 @@ class HouseMap extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     templates: PropTypes.object.isRequired,
-    loadTemplate: PropTypes.func
+    houses: PropTypes.object.isRequired,
+    loadTemplate: PropTypes.func,
+    loadHousesData: PropTypes.func
   };
 
   componentDidMount() {
     this.props.loadTemplate();
+    this.props.loadHousesData();
   }
 
   render() {
-    const { classes, templates } = this.props;
+    const { classes, templates, houses } = this.props;
 
     return (
       <>
@@ -37,23 +41,25 @@ class HouseMap extends Component {
           <Card>
             <CardContent>
               {templates.response &&
-                this.props.templates.response[0].template.map((item, i) => {
+                houses.response &&
+                templates.response[0].template.map((item, i) => {
                   let child;
-
                   if (item.children) {
                     child = item.children;
                   }
                   return (
                     <div key={i}>
                       {item.component === "PRICE" && (
-                        <Price price={item.field} />
+                        <Price price={houses.response.data[0][item.field]} />
                       )}
                       {item.component === "ADDRESS" && (
-                        <Address address={item.field} />
+                        <Address
+                          address={houses.response.data[0][item.field]}
+                        />
                       )}
                       {item.component === "IMAGE" && (
                         <Image
-                          src={item.field}
+                          src={houses.response.data[0][item.field][0]}
                           insider={
                             <div>
                               {child &&
@@ -61,13 +67,31 @@ class HouseMap extends Component {
                                   return (
                                     <div key={k}>
                                       {subitem.component === "ADDRESS" && (
-                                        <Address address={subitem.field} />
+                                        <Address
+                                          address={
+                                            houses.response.data[0][
+                                              subitem.field
+                                            ]
+                                          }
+                                        />
                                       )}
                                       {subitem.component === "PRICE" && (
-                                        <Price price={subitem.field} />
+                                        <Price
+                                          price={
+                                            houses.response.data[0][
+                                              subitem.field
+                                            ]
+                                          }
+                                        />
                                       )}
                                       {subitem.component === "AREA" && (
-                                        <Area area={subitem.field} />
+                                        <Area
+                                          area={
+                                            houses.response.data[0][
+                                              subitem.field
+                                            ]
+                                          }
+                                        />
                                       )}
                                     </div>
                                   );
@@ -76,7 +100,9 @@ class HouseMap extends Component {
                           }
                         />
                       )}
-                      {item.component === "AREA" && <Area area={item.field} />}
+                      {item.component === "AREA" && (
+                        <Area area={houses.response.data[0][item.field]} />
+                      )}
                     </div>
                   );
                 })}
@@ -90,12 +116,14 @@ class HouseMap extends Component {
 
 const mapStateToProps = state => {
   return {
-    templates: state.templates
+    templates: state.templates,
+    houses: state.houses
   };
 };
 
 const mapDispatchToProps = {
-  loadTemplate
+  loadTemplate,
+  loadHousesData
 };
 
 export default connect(

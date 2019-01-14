@@ -18,7 +18,7 @@ const Price = ({ classes, price }) => (
 
 Price.propTypes = {
   classes: PropTypes.object,
-  price: PropTypes.string.isRequired
+  price: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(Price);
