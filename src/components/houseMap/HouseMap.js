@@ -15,17 +15,22 @@ const styles = {
     height: 400
   },
   houseInfo: {
-    height: 300
+    height: 300,
+    position: "relative"
+  },
+  inside: {
+    position: "absolute"
   }
 };
 
 class HouseMap extends Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    template: PropTypes.array.isRequired
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, template } = this.props;
 
     return (
       <>
@@ -37,10 +42,38 @@ class HouseMap extends Component {
         >
           <Card>
             <CardContent className={classes.houseInfo}>
-              <Image />
-              <Area />
-              <Price />
-              <Address />
+              {template.map((item, i) => {
+                let child;
+                if (item.children) {
+                  child = item.children;
+                }
+                return (
+                  <div key={i}>
+                    {item.component === "PRICE" && <Price />}
+                    {item.component === "ADDRESS" && <Address />}
+                    {item.component === "IMAGE" && (
+                      <Image
+                        insider={
+                          <div className={classes.inside}>
+                            {child.map((subitem, k) => {
+                              return (
+                                <div key={k}>
+                                  {subitem.component === "ADDRESS" && (
+                                    <Address />
+                                  )}
+                                  {subitem.component === "PRICE" && <Price />}
+                                  {subitem.component === "AREA" && <Area />}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        }
+                      />
+                    )}
+                    {item.component === "AREA" && <Area />}
+                  </div>
+                );
+              })}
             </CardContent>
           </Card>
         </Grid>

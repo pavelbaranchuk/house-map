@@ -5,20 +5,25 @@ import { CardMedia } from "@material-ui/core";
 
 const styles = {
   media: {
-    height: 200
+    height: 200,
+    width: 200,
+    zIndex: 0
   }
 };
 
-const Image = ({ classes }) => (
+const Image = ({ classes, insider }) => (
   <CardMedia
     className={classes.media}
     image="https://content.screencast.com/users/pablo_picaso/folders/Jing/media/2b164f3f-268b-4130-9c5f-44959fa759e5/00000089.png"
     title="House Image"
-  />
+  >
+    {insider.props.children}
+  </CardMedia>
 );
 
 Image.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  insider: PropTypes.object
 };
 
 export default withStyles(styles)(Image);
