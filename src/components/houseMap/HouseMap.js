@@ -18,6 +18,9 @@ const styles = {
   }
 };
 
+const templateN = 0;
+const houseN = 0;
+
 class HouseMap extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -42,7 +45,7 @@ class HouseMap extends Component {
             <CardContent>
               {templates.response &&
                 houses.response &&
-                templates.response[0].template.map((item, i) => {
+                templates.response[templateN].template.map((item, i) => {
                   let child;
                   if (item.children) {
                     child = item.children;
@@ -50,16 +53,18 @@ class HouseMap extends Component {
                   return (
                     <div key={i}>
                       {item.component === "PRICE" && (
-                        <Price price={houses.response.data[0][item.field]} />
+                        <Price
+                          price={houses.response.data[houseN][item.field]}
+                        />
                       )}
                       {item.component === "ADDRESS" && (
                         <Address
-                          address={houses.response.data[0][item.field]}
+                          address={houses.response.data[houseN][item.field]}
                         />
                       )}
                       {item.component === "IMAGE" && (
                         <Image
-                          src={houses.response.data[0][item.field][0]}
+                          src={houses.response.data[houseN][item.field][0]}
                           insider={
                             <div>
                               {child &&
@@ -69,7 +74,7 @@ class HouseMap extends Component {
                                       {subitem.component === "ADDRESS" && (
                                         <Address
                                           address={
-                                            houses.response.data[0][
+                                            houses.response.data[houseN][
                                               subitem.field
                                             ]
                                           }
@@ -78,7 +83,7 @@ class HouseMap extends Component {
                                       {subitem.component === "PRICE" && (
                                         <Price
                                           price={
-                                            houses.response.data[0][
+                                            houses.response.data[houseN][
                                               subitem.field
                                             ]
                                           }
@@ -87,7 +92,7 @@ class HouseMap extends Component {
                                       {subitem.component === "AREA" && (
                                         <Area
                                           area={
-                                            houses.response.data[0][
+                                            houses.response.data[houseN][
                                               subitem.field
                                             ]
                                           }
@@ -101,7 +106,7 @@ class HouseMap extends Component {
                         />
                       )}
                       {item.component === "AREA" && (
-                        <Area area={houses.response.data[0][item.field]} />
+                        <Area area={houses.response.data[houseN][item.field]} />
                       )}
                     </div>
                   );
