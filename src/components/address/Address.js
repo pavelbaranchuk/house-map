@@ -17,7 +17,7 @@ const Address = ({ classes, address }) => (
 
 Address.propTypes = {
   classes: PropTypes.object,
-  address: PropTypes.object.isRequired
+  address: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Address);

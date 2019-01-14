@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, Card, CardContent } from "@material-ui/core";
 
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { loadCachedTemplate } from "../../store/actionCreators/templates";
 
 import Area from "../area/Area";
 import Image from "../image/Image";
@@ -12,14 +13,7 @@ import Address from "../address/Address";
 
 const styles = {
   houseWrapper: {
-    height: 400
-  },
-  houseInfo: {
-    height: 300,
-    position: "relative"
-  },
-  inside: {
-    position: "absolute"
+    marginTop: "5rem"
   }
 };
 
@@ -34,14 +28,9 @@ class HouseMap extends Component {
 
     return (
       <>
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          className={classes.houseWrapper}
-        >
+        <Grid container justify="center" className={classes.houseWrapper}>
           <Card>
-            <CardContent className={classes.houseInfo}>
+            <CardContent>
               {template.map((item, i) => {
                 let child;
                 if (item.children) {
@@ -57,7 +46,7 @@ class HouseMap extends Component {
                       <Image
                         src={item.field}
                         insider={
-                          <div className={classes.inside}>
+                          <div>
                             {child.map((subitem, k) => {
                               return (
                                 <div key={k}>
@@ -89,4 +78,15 @@ class HouseMap extends Component {
   }
 }
 
-export default withStyles(styles)(HouseMap);
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = {
+  loadCachedTemplate
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(HouseMap));

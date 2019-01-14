@@ -14,14 +14,6 @@ const template = [
       {
         component: "PRICE",
         field: "13"
-      },
-      {
-        component: "PRICE",
-        field: "3"
-      },
-      {
-        component: "AREA",
-        field: "9"
       }
     ]
   },

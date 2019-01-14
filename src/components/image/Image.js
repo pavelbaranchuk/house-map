@@ -5,9 +5,7 @@ import { CardMedia } from "@material-ui/core";
 
 const styles = {
   media: {
-    height: 200,
-    width: 200,
-    zIndex: 0
+    height: "15rem"
   }
 };
 
@@ -20,7 +18,7 @@ const Image = ({ classes, insider, src }) => (
 Image.propTypes = {
   classes: PropTypes.object,
   insider: PropTypes.object,
-  src: PropTypes.object.isRequired
+  src: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Image);

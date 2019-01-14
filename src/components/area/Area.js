@@ -17,7 +17,7 @@ const Area = ({ classes, area }) => (
 
 Area.propTypes = {
   classes: PropTypes.object,
-  area: PropTypes.object.isRequired
+  area: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Area);
