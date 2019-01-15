@@ -11,13 +11,8 @@ import HouseAddress from "./HouseAddress";
 const styles = {
   card: {
     width: "21rem",
-    // display: "flex"
-    // margin: "0 auto"
-
+    position: "relative"
   },
-  // houseWrapper: {
-  //   marginTop: "5rem"
-  // }
 };
 
 function House({ classes, data, template }) {
@@ -58,9 +53,9 @@ function House({ classes, data, template }) {
 }
 
 House.propTypes = {
-  classes: PropTypes.object.isRequired
-  // templates: PropTypes.object.isRequired,
-  // houses: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  template: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(House);

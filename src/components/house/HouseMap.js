@@ -19,7 +19,7 @@ const styles = {
   }
 };
 
-const tempNum = 0;
+const tempNum = 2;
 
 class HouseMap extends Component {
   static propTypes = {
