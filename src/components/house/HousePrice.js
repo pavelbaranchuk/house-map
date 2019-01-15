@@ -14,19 +14,19 @@ const styles = {
   }
 };
 
-const Price = ({ classes, price, inner }) => (
+const HousePrice = ({ classes, price, inner }) => (
   <Typography
     component="p"
     className={inner ? classes.inner : classes.housePrice}
   >
-    {`$${price}`}
+    {price && `$${price}`}
   </Typography>
 );
 
-Price.propTypes = {
+HousePrice.propTypes = {
   classes: PropTypes.object,
   price: PropTypes.number.isRequired,
   inner: PropTypes.bool
 };
 
-export default withStyles(styles)(Price);
+export default withStyles(styles)(HousePrice);

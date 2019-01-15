@@ -5,19 +5,24 @@ import { Typography } from "@material-ui/core";
 
 const styles = {
   houseAddress: {
-    margin: "0.5rem"
+    padding: "0.5rem",
+    // boxSizing: "content-box",
+    height: "4rem",
+    display: "flex",
+    textAlign: "center",
+    alignItems: "center"
   }
 };
 
-const Address = ({ classes, address }) => (
+const HouseAddress = ({ classes, address }) => (
   <Typography component="p" className={classes.houseAddress}>
-    {address}
+    {address && address}
   </Typography>
 );
 
-Address.propTypes = {
+HouseAddress.propTypes = {
   classes: PropTypes.object,
   address: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(Address);
+export default withStyles(styles)(HouseAddress);

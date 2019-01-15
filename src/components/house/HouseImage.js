@@ -6,20 +6,22 @@ import { CardMedia } from "@material-ui/core";
 const styles = {
   media: {
     height: "15rem",
-    width: "20rem"
+    // display: "flex"
+    overflow: "hidden"
   }
 };
 
-const Image = ({ classes, insider, src }) => (
-  <CardMedia className={classes.media} image={src} title="House Image">
+const HouseImage = ({ classes, insider, src, description }) => (
+  <CardMedia className={classes.media} image={src} title={description}>
     {insider.props.children}
   </CardMedia>
 );
 
-Image.propTypes = {
+HouseImage.propTypes = {
   classes: PropTypes.object,
   insider: PropTypes.object,
-  src: PropTypes.string.isRequired
+  src: PropTypes.string.isRequired,
+  description: PropTypes.string
 };
 
-export default withStyles(styles)(Image);
+export default withStyles(styles)(HouseImage);

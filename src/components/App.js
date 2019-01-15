@@ -1,5 +1,5 @@
 import React from "react";
-import HouseMap from "./houseMap/HouseMap";
+import HouseMap from "./house/HouseMap";
 
 const App = () => <HouseMap />;
 

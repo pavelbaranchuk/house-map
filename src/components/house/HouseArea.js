@@ -5,19 +5,20 @@ import { Typography } from "@material-ui/core";
 
 const styles = {
   houseArea: {
-    margin: "0.5rem"
+    margin: "0.5rem",
+    minHeight: "0.5rem"
   }
 };
 
-const Area = ({ classes, area }) => (
+const HouseArea = ({ classes, area }) => (
   <Typography component="p" className={classes.houseArea}>
-    {`${area} sqr. km.`}
+    {area && `${area} sqr. ft.`}
   </Typography>
 );
 
-Area.propTypes = {
+HouseArea.propTypes = {
   classes: PropTypes.object,
-  area: PropTypes.number.isRequired
+  area: PropTypes.number
 };
 
-export default withStyles(styles)(Area);
+export default withStyles(styles)(HouseArea);
