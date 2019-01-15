@@ -83,9 +83,18 @@ class HouseMap extends Component {
                                         />
                                       )}
 
-                                      {/* {subitem.component === "PRICE" && (<Price inner price={houses.response.data[houseN][subitem.field]} />)} */}
+                                      {subitem.component === 'PRICE' && (
+                                        <Price
+                                          inner
+                                          price={
+                                            houses.response.data[houseN][
+                                              subitem.field
+                                            ]
+                                          }
+                                        />
+                                      )}
 
-                                      {/* {subitem.component === 'AREA' && (
+                                      {subitem.component === 'AREA' && (
                                         <Area
                                           area={
                                             houses.response.data[houseN][
@@ -93,7 +102,7 @@ class HouseMap extends Component {
                                             ]
                                           }
                                         />
-                                      )} */}
+                                      )}
                                     </div>
                                   );
                                 })}
