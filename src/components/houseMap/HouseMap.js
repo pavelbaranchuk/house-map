@@ -52,70 +52,21 @@ class HouseMap extends Component {
                   }
                   return (
                     <div key={i}>
-                      {item.component === "PRICE" && (
-                        <Price
-                          price={houses.response.data[houseN][item.field]}
-                        />
-                      )}
+                      {item.component === "PRICE" && (<Price price={houses.response.data[houseN][item.field]} />)}
 
-                      {item.component === "ADDRESS" && (
-                        <Address
-                          address={houses.response.data[houseN][item.field]}
-                        />
-                      )}
+                      {item.component === "ADDRESS" && (<Address address={houses.response.data[houseN][item.field]} />)}
 
-                      {item.component === "IMAGE" && (
-                        <Image
-                          src={houses.response.data[houseN][item.field][0]}
-                          insider={
-                            <div>
-                              {child &&
-                                child.map((subitem, k) => {
-                                  return (
-                                    <div key={k}>
-                                      {subitem.component === "ADDRESS" && (
-                                        <Address
-                                          address={
-                                            houses.response.data[houseN][
-                                              subitem.field
-                                            ]
-                                          }
-                                        />
-                                      )}
+                      {item.component === "IMAGE" && (<Image src={houses.response.data[houseN][item.field][0]} insider={<div>{child && child.map((subitem, k) => {
+                        return (<div key={k}>
+                          {subitem.component === "ADDRESS" && (<Address address={houses.response.data[houseN][subitem.field]} />)}
 
-                                      {subitem.component === "PRICE" && (
-                                        <Price
-                                          inner
-                                          price={
-                                            houses.response.data[houseN][
-                                              subitem.field
-                                            ]
-                                          }
-                                        />
-                                      )}
+                          {subitem.component === "PRICE" && (<Price inner price={houses.response.data[houseN][subitem.field]} />)}
 
-                                      {subitem.component === "AREA" && (
-                                        <Area
-                                          area={
-                                            houses.response.data[houseN][
-                                              subitem.field
-                                            ]
-                                          }
-                                        />
-                                      )}
-                                    </div>
-                                  );
-                                })}
-                            </div>
-                          }
-                        />
-                      )}
+                          {subitem.component === "AREA" && (<Area area={houses.response.data[houseN][subitem.field]} />)}</div>);
+                      })}</div>}
+                      />)}
 
-                      {item.component === "AREA" && (
-                        <Area area={houses.response.data[houseN][item.field]} />
-                      )}
-                    </div>
-                  );
+                      {item.component === "AREA" && (<Area area={houses.response.data[houseN][item.field]} />)}</div>);
                 })}
             </CardContent>
           </Card>
@@ -141,3 +92,9 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withStyles(styles)(HouseMap));
+
+// "husky": {
+  //   "hooks": {
+  //     "pre-commit": "lint-staged"
+  //   }
+  // },
