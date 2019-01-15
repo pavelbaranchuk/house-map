@@ -29,15 +29,15 @@ function House({ classes, data, template }) {
               }
               return (
                 <div className={classes.card} key={i}>
-                  {item.component === "PRICE" && (<HousePrice price={data[item.field]} />)}
+                  {item.component === "PRICE" && (<HousePrice price={data[item.field].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} />)}
 
                   {item.component === "ADDRESS" && (<HouseAddress address={data[item.field]} />)}
 
-                  {item.component === "IMAGE" && (<HouseImage description={data.description} src={data[item.field][0]} insider={<div>{child && child.map((subitem, k) => {
+                  {item.component === "IMAGE" && (<HouseImage description={data.description} src={data[item.field]} insider={<div>{child && child.map((subitem, k) => {
                     return (<div key={k}>
                       {subitem.component === "ADDRESS" && (<HouseAddress address={data[subitem.field]} />)}
 
-                      {subitem.component === "PRICE" && (<HousePrice inner price={data[subitem.field]} />)}
+                      {subitem.component === "PRICE" && (<HousePrice inner price={data[subitem.field].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} />)}
 
                       {subitem.component === "AREA" && (<HouseArea area={data[subitem.field]} />)}</div>);
                   })}</div>}
@@ -54,7 +54,7 @@ function House({ classes, data, template }) {
 
 House.propTypes = {
   classes: PropTypes.object.isRequired,
-  template: PropTypes.object.isRequired,
+  template: PropTypes.array.isRequired,
   data: PropTypes.object.isRequired,
 };
 
