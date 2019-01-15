@@ -73,17 +73,18 @@ class HouseMap extends Component {
                                 child.map((subitem, k) => {
                                   return (
                                     <div key={k}>
-                                      {subitem.component === 'ADDRESS' && (
-                                        <Address
-                                          address={
+                                      {/* {subitem.component === "ADDRESS" && (<Address address={houses.response.data[houseN][subitem.field]} />)} */}
+
+                                      {subitem.component === 'PRICE' && (
+                                        <Price
+                                          inner
+                                          price={
                                             houses.response.data[houseN][
                                               subitem.field
                                             ]
                                           }
                                         />
                                       )}
-
-                                      {/* {subitem.component === "PRICE" && (<Price inner price={houses.response.data[houseN][subitem.field]} />)} */}
 
                                       {subitem.component === 'AREA' && (
                                         <Area
