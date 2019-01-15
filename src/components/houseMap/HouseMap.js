@@ -98,3 +98,9 @@ export default connect(
   //     "pre-commit": "lint-staged"
   //   }
   // },
+
+  // ,
+  //   "*.{html,js,json,scss}": [
+  //     "prettier --write",
+  //     "git add"
+  //   ]
