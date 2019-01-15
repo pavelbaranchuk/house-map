@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {Grid, Card, CardContent} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, Card, CardContent } from '@material-ui/core';
 
-import {connect} from 'react-redux';
-import {loadTemplate} from '../../store/actionCreators/templates';
-import {loadHousesData} from '../../store/actionCreators/houses';
+import { connect } from 'react-redux';
+import { loadTemplate } from '../../store/actionCreators/templates';
+import { loadHousesData } from '../../store/actionCreators/houses';
 
 import Area from '../area/Area';
 import Image from '../image/Image';
@@ -36,7 +36,7 @@ class HouseMap extends Component {
   }
 
   render() {
-    const {classes, templates, houses} = this.props;
+    const { classes, templates, houses } = this.props;
 
     return (
       <>
@@ -85,7 +85,7 @@ class HouseMap extends Component {
 
                                       {/* {subitem.component === "PRICE" && (<Price inner price={houses.response.data[houseN][subitem.field]} />)} */}
 
-                                      {subitem.component === 'AREA' && (
+                                      {/* {subitem.component === 'AREA' && (
                                         <Area
                                           area={
                                             houses.response.data[houseN][
@@ -93,7 +93,7 @@ class HouseMap extends Component {
                                             ]
                                           }
                                         />
-                                      )}
+                                      )} */}
                                     </div>
                                   );
                                 })}
