@@ -46,7 +46,7 @@
       "eslint --max-warnings=0",
       "git add"
     ],
-    "*.{html,js,json,scss}": [
+    "*.{html,json,scss}": [
       "prettier --write",
       "git add"
     ]
