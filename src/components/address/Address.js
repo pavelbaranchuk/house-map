@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 
 const styles = {
   houseAddress: {
-    marginTop: "0.5rem"
+    margin: "0.5rem"
   }
 };
 

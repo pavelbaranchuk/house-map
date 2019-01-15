@@ -82,6 +82,7 @@ class HouseMap extends Component {
                                       )}
                                       {subitem.component === "PRICE" && (
                                         <Price
+                                          inner
                                           price={
                                             houses.response.data[houseN][
                                               subitem.field
