@@ -57,11 +57,13 @@ class HouseMap extends Component {
                           price={houses.response.data[houseN][item.field]}
                         />
                       )}
+
                       {item.component === "ADDRESS" && (
                         <Address
                           address={houses.response.data[houseN][item.field]}
                         />
                       )}
+
                       {item.component === "IMAGE" && (
                         <Image
                           src={houses.response.data[houseN][item.field][0]}
@@ -80,6 +82,7 @@ class HouseMap extends Component {
                                           }
                                         />
                                       )}
+
                                       {subitem.component === "PRICE" && (
                                         <Price
                                           inner
@@ -90,6 +93,7 @@ class HouseMap extends Component {
                                           }
                                         />
                                       )}
+
                                       {subitem.component === "AREA" && (
                                         <Area
                                           area={
@@ -106,6 +110,7 @@ class HouseMap extends Component {
                           }
                         />
                       )}
+
                       {item.component === "AREA" && (
                         <Area area={houses.response.data[houseN][item.field]} />
                       )}
