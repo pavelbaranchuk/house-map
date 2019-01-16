@@ -5,7 +5,7 @@ export function loadHousesData() {
     dispatch({
       type: actionTypes.FETCH_HOUSE_DATA_START
     });
-    fetch(`http://demo4452328.mockable.io/properties`)
+    fetch(`https://demo4452328.mockable.io/properties`)
       .then(res => {
         if (res.status >= 400) {
           throw new Error(res.statusText);

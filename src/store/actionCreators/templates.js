@@ -5,7 +5,7 @@ export function loadTemplate() {
     dispatch({
       type: actionTypes.FETCH_TEMPLATE_START
     });
-    fetch(`http://demo4452328.mockable.io/templates`)
+    fetch(`https://demo4452328.mockable.io/templates`)
       .then(res => {
         if (res.status >= 400) {
           throw new Error(res.statusText);
