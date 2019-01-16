@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
@@ -15,11 +14,9 @@ const styles = {
     margin: "2rem 0 2rem"
   },
   container: {
-    margin: `0 3rem`
+    margin: "7rem 3rem"
   }
 };
-
-const tempNum = 2;
 
 class HouseMap extends Component {
   static propTypes = {
@@ -40,14 +37,11 @@ class HouseMap extends Component {
 
     return (
       <div className={classes.container}>
-        <Typography variant="h4" className={classes.title}>
-          Main
-        </Typography>
-
         <Grid container spacing={32}>
-          {templates.response && houses.response && houses.response.data.map((item, i) => (
+          {templates.structure.response && houses.response && houses.response.data.map((item, i) => (
+
             <Grid key={houses.response.data[i].id} item lg={4} md={6} sm={12} xs={12}>
-              <House template={templates.response[tempNum].template} data={houses.response.data[i]} />
+              <House template={templates.structure.response[templates.tempNum].template} data={houses.response.data[i]} />
             </Grid>
           ))}
         </Grid>

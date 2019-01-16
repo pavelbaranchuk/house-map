@@ -26,3 +26,10 @@ export function loadTemplate() {
       });
   };
 }
+
+export function changeTemplate(tempNum) {
+  return {
+    type: actionTypes.CHANGE_TEMPLATE,
+    tempNum: tempNum
+  }
+}
