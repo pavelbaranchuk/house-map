@@ -22,13 +22,13 @@ const HousePrice = ({ classes, price, inner }) => (
     component="p"
     className={inner ? classes.inner : classes.housePrice}
   >
-    {price && `$${price}`}
+    {price && `$${price.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`}
   </Typography>
 );
 
 HousePrice.propTypes = {
   classes: PropTypes.object,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   inner: PropTypes.bool
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { CardMedia, IconButton } from "@material-ui/core";
@@ -10,20 +10,19 @@ const styles = {
   },
   nextButton: {
     fontSize: "3rem",
-    background: "rgba(0, 0, 0, 0.4)",
+    background: "rgba(255, 255, 255, 0.3)",
     borderRadius: "50%",
     color: "black"
 
   },
   previousButton: {
     fontSize: "3rem",
-    background: "rgba(0, 0, 0, 0.4)",
+    background: "rgba(255, 255, 255, 0.3)",
     borderRadius: "50%",
     color: "black"
   },
   previousWrapper: {
     position: "absolute",
-    background: "rgba(0, 0, 0, 0.2)",
     top: 0,
     bottom: 0,
     left: 0,
@@ -32,7 +31,6 @@ const styles = {
   },
   nextWrapper: {
     position: "absolute",
-    background: "rgba(0, 0, 0, 0.2)",
     top: 0,
     bottom: 0,
     left: "16.5rem",
@@ -41,37 +39,63 @@ const styles = {
   },
   children: {
     display: "flex",
-    justifyContent: "center",
-    paddingTop: "1rem"
+    flexDirection: "row-reverse",
+    padding: "1rem 0.75rem"
   }
 };
 
-const HouseImage = ({ classes, insider, src, description }) => (
+class HouseImage extends Component {
+  static propTypes = {
+    classes: PropTypes.object,
+    insider: PropTypes.object,
+    src: PropTypes.array.isRequired,
+    description: PropTypes.string
+  };
 
-  <CardMedia className={classes.media} image={src[0]} title={description}>
+  state = {
+    currentImage: 0
+  }
 
-    <div className={classes.children}>
-      {insider.props.children}
-    </div>
+  render() {
+    const { classes, insider, src, description } = this.props;
 
-    {(src.length !== 1) &&
-      <>
-        <IconButton className={classes.previousWrapper} aria-label="Previous">
-          <ArrowLeft className={classes.previousButton} />
-        </IconButton>
+    return (
+      <CardMedia className={classes.media} image={src[this.state.currentImage]} title={description}>
+        <div className={classes.children}>
+          {insider.props.children}
+        </div>
 
-        <IconButton className={classes.nextWrapper} aria-label="Next">
-          <ArrowRight className={classes.nextButton} />
-        </IconButton>
-      </>}
-  </CardMedia>
-);
+        {(src.length !== 1) &&
+          <>
+            <IconButton className={classes.previousWrapper} aria-label="Previous" onClick={this.handlePreviousClick}>
+              <ArrowLeft className={classes.previousButton} />
+            </IconButton>
 
-HouseImage.propTypes = {
-  classes: PropTypes.object,
-  insider: PropTypes.object,
-  src: PropTypes.array.isRequired,
-  description: PropTypes.string
+            <IconButton className={classes.nextWrapper} aria-label="Next" onClick={this.handleNextClick}>
+              <ArrowRight className={classes.nextButton} />
+            </IconButton>
+          </>}
+      </CardMedia>
+    )
+  }
+
+  handleNextClick = () => {
+    const { currentImage } = this.state;
+    if (currentImage === this.props.src.length - 1) {
+      this.setState({ currentImage: 0 })
+    } else {
+      this.setState({ currentImage: currentImage + 1 })
+    }
+  }
+
+  handlePreviousClick = () => {
+    const { currentImage } = this.state;
+    if (currentImage === 0) {
+      this.setState({ currentImage: this.props.src.length - 1 })
+    } else {
+      this.setState({ currentImage: currentImage - 1 })
+    }
+  }
 };
 
 export default withStyles(styles)(HouseImage);

@@ -29,21 +29,22 @@ function House({ classes, data, template }) {
               }
               return (
                 <div className={classes.card} key={i}>
-                  {item.component === "PRICE" && (<HousePrice price={data[item.field].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} />)}
+                  {item.component === "PRICE" && (<HousePrice price={data[item.field]} />)}
 
                   {item.component === "ADDRESS" && (<HouseAddress address={data[item.field]} />)}
+
+                  {item.component === "AREA" && (<HouseArea area={data[item.field]} />)}
 
                   {item.component === "IMAGE" && (<HouseImage description={data.description} src={data[item.field]} insider={<div>{child && child.map((subitem, k) => {
                     return (<div key={k}>
                       {subitem.component === "ADDRESS" && (<HouseAddress address={data[subitem.field]} />)}
 
-                      {subitem.component === "PRICE" && (<HousePrice inner price={data[subitem.field].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} />)}
+                      {subitem.component === "PRICE" && (<HousePrice inner price={data[subitem.field]} />)}
 
                       {subitem.component === "AREA" && (<HouseArea area={data[subitem.field]} />)}</div>);
                   })}</div>}
                   />)}
-
-                  {item.component === "AREA" && (<HouseArea area={data[item.field]} />)}</div>);
+                </div>);
             })}
           </CardContent>
         </Card>

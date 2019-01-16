@@ -22,7 +22,7 @@ const HouseAddress = ({ classes, address }) => (
 
 HouseAddress.propTypes = {
   classes: PropTypes.object,
-  address: PropTypes.string.isRequired
+  address: PropTypes.string
 };
 
 export default withStyles(styles)(HouseAddress);
