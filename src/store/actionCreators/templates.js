@@ -15,7 +15,7 @@ export function loadTemplate() {
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_TEMPLATE_SUCCESS,
-          payload: { response }
+          payload: response
         })
       )
       .catch(error => {

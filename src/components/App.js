@@ -4,8 +4,8 @@ import Header from "./header/Header";
 
 const App = () => (
   <>
-    <HouseMap />
     <Header />
+    <HouseMap />
   </>
 )
 

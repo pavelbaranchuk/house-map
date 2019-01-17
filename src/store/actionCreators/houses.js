@@ -15,7 +15,7 @@ export function loadHousesData() {
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_HOUSE_DATA_SUCCESS,
-          payload: { response }
+          payload: response
         })
       )
       .catch(error => {

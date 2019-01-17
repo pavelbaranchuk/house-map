@@ -6,7 +6,7 @@ import { ArrowRight, ArrowLeft } from "@material-ui/icons";
 
 const styles = {
   media: {
-    height: "15rem",
+    height: "15rem"
   },
   nextButton: {
     fontSize: "3rem",

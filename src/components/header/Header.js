@@ -50,7 +50,7 @@ class Header extends Component {
 
   handleChangeTemplate = () => {
     const { templates, changeTemplate } = this.props;
-    if (templates.tempNum === templates.structure.response.length - 1) {
+    if (templates.tempNum === templates.structure.length - 1) {
       changeTemplate(0);
     } else {
       changeTemplate(templates.tempNum + 1);

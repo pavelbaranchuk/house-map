@@ -14,7 +14,7 @@ const styles = {
     margin: "2rem 0 2rem"
   },
   container: {
-    margin: "7rem 3rem"
+    margin: "7rem 0"
   }
 };
 
@@ -38,11 +38,12 @@ class HouseMap extends Component {
     return (
       <div className={classes.container}>
         <Grid container spacing={32}>
-          {templates.structure.response && houses.response && houses.response.data.map((item, i) => (
+          {templates.structure.length && houses.data && houses.data.map((item, i) => (
 
-            <Grid key={houses.response.data[i].id} item lg={4} md={6} sm={12} xs={12}>
-              <House template={templates.structure.response[templates.tempNum].template} data={houses.response.data[i]} />
+            <Grid key={houses.data[i].id} item lg={4} md={6} sm={12} xs={12}>
+              <House template={templates.structure[templates.tempNum].template} data={houses.data[i]} />
             </Grid>
+
           ))}
         </Grid>
       </div>
