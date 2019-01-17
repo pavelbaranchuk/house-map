@@ -1,0 +1,56 @@
+{
+  "name": "house-map",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://pavelbaranchuk.github.io/house-map",
+  "dependencies": {
+    "@material-ui/core": "3.8.3",
+    "@material-ui/icons": "3.0.2",
+    "prop-types": "15.6.2",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "react-redux": "6.0.0",
+    "react-scripts": "2.1.3",
+    "redux": "4.0.1",
+    "redux-logger": "3.0.6",
+    "redux-thunk": "2.3.0",
+    "typeface-roboto": "0.0.54"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "npm run build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "fix": "eslint --fix ./src",
+    "lint": "eslint ./src"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "eslint-config-prettier": "3.3.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "husky": "1.1.4",
+    "lint-staged": "8.0.4",
+    "prettier": "1.15.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --max-warnings=0",
+      "git add"
+    ],
+    "*.{html,json,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
